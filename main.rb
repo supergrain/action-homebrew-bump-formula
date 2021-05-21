@@ -99,7 +99,7 @@ module Homebrew
     tag = tag.delete_prefix 'refs/tags/'
     version = Version.parse tag
 
-    unless ref.empty?
+    unless ref.nil?
       version = ref
     end
 
