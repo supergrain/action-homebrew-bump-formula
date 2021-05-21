@@ -48,6 +48,7 @@ module Homebrew
   revision = ENV['HOMEBREW_BUMP_REVISION']
   force = ENV['HOMEBREW_BUMP_FORCE']
   livecheck = ENV['HOMEBREW_BUMP_LIVECHECK']
+  ref = ENV['ref']
 
   # Check inputs
   if livecheck.false?
@@ -97,6 +98,11 @@ module Homebrew
     # Prepare tag and url
     tag = tag.delete_prefix 'refs/tags/'
     version = Version.parse tag
+
+    unless ref.empty?
+      version = ref
+    end
+
     url = stable.url.gsub stable.version, version
 
     # Check if formula is originating from PyPi

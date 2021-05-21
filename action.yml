@@ -68,6 +68,12 @@ inputs:
       If formula input is specified - check one or more formulae.
       If formula and tap inputs are specified - check one or more formulae in that tap.
     required: false
+  ref:
+    description: |
+      Use this ref as the version in the formula, overriding tag
+
+      Example: 130d3a3af72f66780ae4e24cd143ae7a4d757f9d
+    required: false
 runs:
   using: composite
   steps:
@@ -85,3 +91,4 @@ runs:
         HOMEBREW_BUMP_REVISION: ${{inputs.revision}}
         HOMEBREW_BUMP_FORCE: ${{inputs.force}}
         HOMEBREW_BUMP_LIVECHECK: ${{inputs.livecheck}}
+        HOMEBREW_BUMP_REF: ${{inputs.ref}}
