@@ -48,7 +48,7 @@ module Homebrew
   revision = ENV['HOMEBREW_BUMP_REVISION']
   force = ENV['HOMEBREW_BUMP_FORCE']
   livecheck = ENV['HOMEBREW_BUMP_LIVECHECK']
-  ref = ENV['ref']
+  ref = ENV['HOMEBREW_BUMP_REF']
 
   # Check inputs
   if livecheck.false?
