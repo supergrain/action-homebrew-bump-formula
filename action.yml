@@ -91,5 +91,5 @@ runs:
         HOMEBREW_BUMP_REVISION: ${{inputs.revision}}
         HOMEBREW_BUMP_FORCE: ${{inputs.force}}
         HOMEBREW_BUMP_LIVECHECK: ${{inputs.livecheck}}
-        HOMEBREW_USER_NAME: ${{inputs.livecheck}}
-        HOMEBREW_USER_EMAIL: ${{inputs.livecheck}}
+        HOMEBREW_USER_NAME: ${{inputs.user_name}}
+        HOMEBREW_USER_EMAIL: ${{inputs.user_email}}
