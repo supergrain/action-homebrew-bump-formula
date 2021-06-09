@@ -8,6 +8,12 @@ inputs:
   token:
     description: GitHub token (not the default one)
     required: true
+  user_name:
+    description: User name for commit message
+    required: true
+  user_email:
+    description: User email for commit message
+    required: true
   message:
     description: |
       Additional message to append to created PR.
@@ -85,3 +91,5 @@ runs:
         HOMEBREW_BUMP_REVISION: ${{inputs.revision}}
         HOMEBREW_BUMP_FORCE: ${{inputs.force}}
         HOMEBREW_BUMP_LIVECHECK: ${{inputs.livecheck}}
+        HOMEBREW_USER_NAME: ${{inputs.livecheck}}
+        HOMEBREW_USER_EMAIL: ${{inputs.livecheck}}

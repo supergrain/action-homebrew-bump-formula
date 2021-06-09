@@ -48,27 +48,14 @@ module Homebrew
   revision = ENV['HOMEBREW_BUMP_REVISION']
   force = ENV['HOMEBREW_BUMP_FORCE']
   livecheck = ENV['HOMEBREW_BUMP_LIVECHECK']
+  user_name = ENV['HOMEBREW_USER_NAME']
+  user_email = ENV['HOMEBREW_USER_EMAIL']
 
   # Check inputs
   if livecheck.false?
     odie "Need 'formula' input specified" if formula.blank?
     odie "Need 'tag' input specified" if tag.blank?
   end
-
-  # Get user details
-  user = GitHub::API.open_rest "#{GitHub::API_URL}/user"
-  user_id = user['id']
-  user_login = user['login']
-  user_name = user['name'] || user['login']
-  user_email = user['email'] || (
-    # https://help.github.com/en/github/setting-up-and-managing-your-github-user-account/setting-your-commit-email-address
-    user_created_at = Date.parse user['created_at']
-    plus_after_date = Date.parse '2017-07-18'
-    need_plus_email = (user_created_at - plus_after_date).positive?
-    user_email = "#{user_login}@users.noreply.github.com"
-    user_email = "#{user_id}+#{user_email}" if need_plus_email
-    user_email
-  )
 
   # Tell git who you are
   git 'config', '--global', 'user.name', user_name
